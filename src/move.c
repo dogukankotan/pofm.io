@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <dirent.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <dirent.h>
+#include <string.h>
 
-int main()
+void move()
 {
     DIR *directory;
     char source_file[20], target_file[20],Currentpath[100],charr,del;
@@ -62,8 +63,26 @@ int main()
 
 
     }
-    return 0;
 
 }
 
-
+int main(int argc, char *argv[])
+{
+  if (argc == 2) {
+        for (int i = 1; i < argc; ++i) {
+            if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
+                //help();
+                return;
+            }
+        }
+        puts("Unsupported argument. Please use -h or --help for usage.");
+    }
+  else if (argc < 2) {
+        move();
+        return;
+    }
+  else {
+        puts("Please give argument or for usage use -h or --help.");
+    }
+   return 0;
+}

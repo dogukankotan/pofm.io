@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
-
-int main()
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+void delete()
 {
     DIR *directory;
     char CurrentPath[150], filenamex[50], withpath[200];
@@ -25,5 +27,25 @@ int main()
     remove(filenamex);
     printf("Deletion is done!");
 
+}
 
+int main(int argc, char *argv[])
+{
+  if (argc == 2) {
+        for (int i = 1; i < argc; ++i) {
+            if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
+                //help();
+                return;
+            }
+        }
+        puts("Unsupported argument. Please use -h or --help for usage.");
+    }
+  else if (argc < 2) {
+        delete();
+        return;
+    }
+  else {
+        puts("Please give argument or for usage use -h or --help.");
+    }
+   return 0;
 }

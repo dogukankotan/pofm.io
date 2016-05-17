@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <dirent.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
+#include <dirent.h>
 
-int main()
-{
+void copy_() {
     DIR *directory;
     char Currentpath[100];
     char charr, source_file[20], target_file[20];
     FILE *source, *target;
 
-    directory = opendir("./");
+  
     if (directory != NULL && getcwd(Currentpath, sizeof(Currentpath)) !=NULL)
     {
         fprintf(stdout, "\nYour current directory is: %s \n", getcwd(Currentpath, sizeof(Currentpath)));
@@ -52,8 +52,27 @@ int main()
            fclose(target);
 
     }
-   return 0;
+}
 
+int main(int argc, char *argv[])
+{
+  if (argc == 2) {
+        for (int i = 1; i < argc; ++i) {
+            if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
+                //help();
+                return;
+            }
+        }
+        puts("Unsupported argument. Please use -h or --help for usage.");
+    }
+  else if (argc < 2) {
+        copy_();
+        return;
+    }
+  else {
+        puts("Please give argument or for usage use -h or --help.");
+    }
+   return 0;
 }
 
 

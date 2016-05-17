@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-int main()
+void create()
 {
     DIR *directory;
     char CurrentPath[150], filenamex[50], withpath[200];
@@ -10,7 +13,7 @@ int main()
     directory = opendir("./");
     if (directory != NULL && getcwd(CurrentPath, sizeof(CurrentPath)) != NULL)
     {
-        fprintf(stdout, "\n Your current directory is: &s \n", getcwd(CurrentPath, sizeof(CurrentPath)));
+        fprintf(stdout, "\n Your current directory is: %s \n", getcwd(CurrentPath, sizeof(CurrentPath)));
         closedir(directory);
     }
 
@@ -35,6 +38,26 @@ int main()
         filename = fopen(filenamex,"w");
         fclose(filename);
         printf("You are done with creating the file!");
-        return 0;
     }
+}
+
+int main(int argc, char *argv[])
+{
+  if (argc == 2) {
+        for (int i = 1; i < argc; ++i) {
+            if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
+                //help();
+                return;
+            }
+        }
+        puts("Unsupported argument. Please use -h or --help for usage.");
+    }
+  else if (argc < 2) {
+        create();
+        return;
+    }
+  else {
+        puts("Please give argument or for usage use -h or --help.");
+    }
+   return 0;
 }
