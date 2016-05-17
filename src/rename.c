@@ -6,22 +6,12 @@ int main()
 {
     DIR *directory;
     char CurrentPath[150], filenameO[50], filnameN[50];
-    struct dirent *dir2;
-
-    directory = opendir("./");
 
     if (directory != NULL && getcwd(CurrentPath,sizeof(CurrentPath)) != NULL)
     {
         fprintf(stdout,"\n You are on %s\n The files on the directory is as following \n",getcwd(CurrentPath,sizeof(CurrentPath)));
-        while ((dir2 =readdir(directory)) != NULL )
-        {
-            printf("%s\n", dir2 -> d_name);
-        }
-        closedir(directory);
-    } else {
-        perror("could open directory");
-        return EXIT_FAILURE;
-    }
+      
+    } 
 
     printf("please enter name of the file that will be renamed\n");
     gets(filenameO);
