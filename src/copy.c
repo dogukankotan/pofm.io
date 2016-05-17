@@ -5,6 +5,10 @@
 #include <string.h>
 #include <dirent.h>
 
+void help(){
+  printf("This command copies a file in your current directory to any directory, if you want to copy a file in other directory to any directory\n you can enter file name by giving directory,\nyou just need to enter a file name,\nthen enter a directory where you want to copy\n");
+}
+
 void copy_() {
     DIR *directory;
     char Currentpath[100];
@@ -59,7 +63,7 @@ int main(int argc, char *argv[])
   if (argc == 2) {
         for (int i = 1; i < argc; ++i) {
             if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
-                //help();
+                help();
                 return;
             }
         }

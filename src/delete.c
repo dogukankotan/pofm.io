@@ -4,6 +4,11 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+void help(){
+  puts("By this function, you will be able to delete a file in your current path or in a given path. Usage: After calling the function you will be asked the file name. If you write a name with extension as following 'example.txt', the file will be deleted your current path. If you write 'C:\\users\\opsys\\desktop\\example.txt', the file will be deleted at given path. To delete a file, there has to be a file in that name at that path.");
+}
+
 void delete()
 {
     DIR *directory;
@@ -34,7 +39,7 @@ int main(int argc, char *argv[])
   if (argc == 2) {
         for (int i = 1; i < argc; ++i) {
             if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
-                //help();
+                help();
                 return;
             }
         }

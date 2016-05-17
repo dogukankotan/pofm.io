@@ -5,6 +5,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+void help(){
+    puts("By this function, you will be able to rename a file in your current path or in a given path. First you will be asked file name to change. There has to be a file in that name and if there is, you will be asked new name. To give new name, there has not to be a file in that name.");
+}
+
 void rename_()
 {
     DIR *directory;
@@ -47,7 +51,7 @@ int main(int argc, char *argv[])
   if (argc == 2) {
         for (int i = 1; i < argc; ++i) {
             if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
-                //help();
+                help();
                 return;
             }
         }

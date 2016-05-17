@@ -5,6 +5,10 @@
 #include <dirent.h>
 #include <string.h>
 
+void help(){
+  printf("This command moves a file in your current directory to any directory, if you want to move a file in other directory to any directory\n you can enter file name by giving directory,\nyou just need to enter a file name,\nthen enter a directory where you want to move\n");
+}
+
 void move()
 {
     DIR *directory;
@@ -71,7 +75,7 @@ int main(int argc, char *argv[])
   if (argc == 2) {
         for (int i = 1; i < argc; ++i) {
             if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
-                //help();
+                help();
                 return;
             }
         }
