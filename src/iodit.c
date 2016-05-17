@@ -21,7 +21,7 @@ void main(int argc, char *argv[]) {
                 return;
             }
             else if (strcmp(argv[i], "-i") == 0 || strcmp(argv[i], "--insert") == 0) {
-                insert(argv);
+                insert(argv, argc);
                 return;
             }
             else if (strcmp(argv[i], "-d") == 0 || strcmp(argv[i], "--destroy") == 0) {
