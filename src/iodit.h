@@ -1,6 +1,6 @@
-void append(char *filename);
+void append(char *argv[], int argc);
 
-void insert(char *filename);
+void insert(char *argv[]);
 
 void destroy(char *filename);
 
@@ -38,11 +38,36 @@ void help() {
     puts("\t\tiodit.exe filename -s");
 }
 
-void append(char *filename) {
-
+void append(char *argv[], int argc) {
+    FILE *file;
+    char *filename;
+    filename = argv[1];
+    if (access(filename, 0) == -1)
+        {
+            printf("%s File does not exist!\n", filename);
+        }
+        else {
+            if (access(filename, 2) != -1){
+                file = fopen(filename, "a");
+                fprintf(file,"\r\n" );
+                for (int e = 3; e < argc ; ++e) { 
+                    if (argv[e][0]!='\0'){
+                        fprintf(file, "%s", argv[e]);
+                        printf("%s, Text Added Succcessfully.\n", argv[e]);
+                    }
+                    else{
+                        printf("Text Not Added.\n");
+                    }
+                }
+                fclose(file);
+            }
+            else {
+                printf("%s text file does not have the Write Permission!\n", filename);
+            }
+        }
 }
 
-void insert(char *filename) {
+void insert(char *argv[]) {
 
 }
 

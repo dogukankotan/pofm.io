@@ -2,7 +2,6 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 #include "iodit.h"
 
 void main(int argc, char *argv[]) {
@@ -18,11 +17,11 @@ void main(int argc, char *argv[]) {
     else if (argc > 2) {
         for (int i = 2; i < argc; ++i) {
             if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--append") == 0) {
-                append(argv[1]);
+                append(argv, argc);
                 return;
             }
             else if (strcmp(argv[i], "-i") == 0 || strcmp(argv[i], "--insert") == 0) {
-                insert(argv[1]);
+                insert(argv);
                 return;
             }
             else if (strcmp(argv[i], "-d") == 0 || strcmp(argv[i], "--destroy") == 0) {
