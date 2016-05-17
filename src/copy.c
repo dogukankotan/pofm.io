@@ -8,10 +8,10 @@
 void copy_() {
     DIR *directory;
     char Currentpath[100];
-    char charr, source_file[20], target_file[20];
+    char charr, source_file[200], target_file[200];
     FILE *source, *target;
 
-  
+    directory = opendir("./");
     if (directory != NULL && getcwd(Currentpath, sizeof(Currentpath)) !=NULL)
     {
         fprintf(stdout, "\nYour current directory is: %s \n", getcwd(Currentpath, sizeof(Currentpath)));
